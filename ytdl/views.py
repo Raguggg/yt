@@ -17,7 +17,10 @@ def download_video(request):
         regex = r'^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+'
         if not re.match(regex,video_url):
             return HttpResponse('Enter correct url.')
-
+        if "shorts/" in video_url:
+            temp_var = video_url.split("shorts/")[1]
+            f_code = temp_var.split('?')[0]
+            video_url = "https://youtube.com/watch?v="+f_code +"?"
         ydl_opts = {}
         try:
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
