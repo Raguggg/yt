@@ -50,7 +50,7 @@ def download_video(request):
                 'duration': round(int(meta.get('duration', 1))/60, 2),
                 'views': f'{int(meta.get("view_count")):,}'
             }
-            return render(request, 'home.html', context)
+            return render(request, 'index.html', context)
         except Exception as error:
             return HttpResponse(error.args[0])
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'index.html', {'form': form})
