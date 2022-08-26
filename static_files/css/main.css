@@ -7,9 +7,9 @@ html, body {
 
 /* https://www.boredpanda.com/blog/wp-content/uploads/2016/10/documentary-intelligent-trees-peter-wohlleben-suzanne-simard-4.jpg */
 .background {
-    background: url("https://www.boredpanda.com/blog/wp-content/uploads/2016/10/documentary-intelligent-trees-peter-wohlleben-suzanne-simard-4.jpg");
-    width: 100vh;
-    background-size: cover;
+    background: url("https://raw.githubusercontent.com/Raguggg/yt/master/bg.jpg");
+    width: 100%;
+    background-size: contain;
     padding-bottom: 200px
 }
 .btn:hover
@@ -39,7 +39,9 @@ p {
     text-align: center;
     padding-top: 3%;
 }
-
+.img-responsive{
+    width: 100%;
+}
 .content > form > div > div > input {
     padding: 15px;
     border-radius: 10px;
@@ -140,7 +142,11 @@ th {
     display: none;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+    .background {
+        width: 100%;
+        background-size: cover;
+        padding-bottom: 200px}
     .dbox, .downloads {
         padding-right: 10px;
         padding-left: 10px;
@@ -365,5 +371,18 @@ th {
     src: url('fonts/CircularStd-BookItalic.eot?#iefix') format('embedded-opentype'), url('fonts/CircularStd-BookItalic.woff') format('woff'), url('fonts/CircularStd-BookItalic.ttf') format('truetype'), url('fonts/CircularStd-BookItalic.svg#bcc26993292869431e54c666aafa8fcd') format('svg');
     font-weight: 400;
     font-style: italic;
+}
+@media screen and (max-width: 450px){
+    .title {
+  font-size:40px;}
+  .background {
+    width: 150%;
+    background-size: cover;
+    padding-bottom: 200px
+ 
+}
+.title{
+    font-size: 30px;
+}
 }
 
