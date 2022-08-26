@@ -6,7 +6,8 @@ from django.shortcuts import render
 import youtube_dl
 from .forms import DownloadForm
 import re
-
+E='?'
+D='shorts/'
 
 def download_video(request):
     global context
@@ -14,13 +15,10 @@ def download_video(request):
 
     if form.is_valid():
         video_url = form.cleaned_data.get("url")
-        regex = r'^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+'
-        if not re.match(regex,video_url):
+        Z = r'^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+'
+        if not re.match(Z,video_url):
             return HttpResponse('Enter correct url.')
-        if "shorts/" in video_url:
-            temp_var = video_url.split("shorts/")[1]
-            f_code = temp_var.split('?')[0]
-            video_url = "https://youtube.com/watch?v="+f_code +"?"
+        if D in video_url:video_url='https://youtube.com/watch?v='+video_url.split(D)[1].split(E)[0]+E
         ydl_opts = {}
         try:
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
@@ -42,6 +40,9 @@ def download_video(request):
                     'video_url': m['url']
                 })
             video_audio_streams = video_audio_streams[::-1]
+            A=0
+            B='extension'
+            for C in video_audio_streams:C[B] = C[B]+('(only audio)' if C['resolution']=='Audio' else('(video+audio)'if A==0 or A==1 else '(only video)'));A+=1
             context = {
                 'form': form,
                 'title': meta.get('title', None),
