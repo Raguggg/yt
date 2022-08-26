@@ -10,7 +10,13 @@ html, body {
     background: url("https://raw.githubusercontent.com/Raguggg/yt/master/bg.jpg");
     width: 100%;
     background-size: contain;
-    padding-bottom: 200px
+    padding-bottom: 200px;
+  margin: auto;
+  /* position: absolute; */
+  top: 0;
+  left: auto;
+  right: auto;
+    
 }
 .btn:hover
 {
@@ -88,7 +94,7 @@ a {
 .dbox > .img-thumb > img {
     margin-right: auto;
     margin-left: auto;
-    display: block;
+    display: flex;
     border-radius: 10px;
 }
 
@@ -143,6 +149,44 @@ th {
 }
 
 @media screen and (max-width: 600px) {
+    .background {
+        max-width: 100%;
+        background-size: cover;
+        padding-bottom: 200px}
+    .dbox, .downloads {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    
+    .dbox > .img-thumb > img {
+        width: 100% !important;
+    }
+
+    #desl {
+        display: none;
+    }
+
+    #m-show {
+        display: block;
+    }
+}
+@media screen and (max-width: 480px) {
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: 'CircularStd';
+    
+    }
+    
+    th, td {
+        text-align: left;
+        padding: 10px;
+        font-size: 10px;
+    }
+    .title
+    {
+        font-size: 43px;
+    }
     .background {
         width: 100%;
         background-size: cover;
