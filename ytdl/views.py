@@ -49,7 +49,7 @@ def download_video(request):
                 'description': meta.get('description'),
                 'likes': f'{int(meta.get("like_count", 0)):,}',
                 'dislikes': f'{int(meta.get("dislike_count", 0)):,}',
-                'thumb': meta.get('thumbnails')[3]['url'],
+                'thumb': meta.get('thumbnails')[len(meta.get('thumbnails'))-1]['url'],
                 'duration': round(int(meta.get('duration', 1))/60, 2),
                 'views': f'{int(meta.get("view_count")):,}'
             }
