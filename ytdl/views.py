@@ -8,6 +8,7 @@ from .forms import DownloadForm
 import re
 E='?'
 D='shorts/'
+X = '<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Invalid UrL</title> <style> body { background: #000; } .title { text-align: center; font-family:arial black; font-size:50px; background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: move 70s linear infinite; } @keyframes move { to { background-position: 3500vh; } } .title .btn:hov{ text-align: center; font-family:arial black; font-size:50px; background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: move 70s linear infinite; } @keyframes move { to { background-position: 3500vh; } } .btn{ align-items: center; text-align: center; } .btn a h1{ font-size: 70px; } .btn{ padding-top: 90px; } .btn button{ background-color: rgba(64, 255, 0, 0.633); width: 300px; border-radius: 30%; } .btn button:hover { color: rgb(0, 252, 0); } </style></head><body> <div class="title">Invalid Url</div> <div class="btn"> <a href="https://ragu-youtube.herokuapp.com/"><button><h1 class="title">Reload</h1> </button></a></div></body></html>'
 
 def download_video(request):
     global context
@@ -17,7 +18,7 @@ def download_video(request):
         video_url = form.cleaned_data.get("url")
         Z = r'^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+'
         if not re.match(Z,video_url):
-            return HttpResponse('Enter correct url.')
+            return HttpResponse(X)
         if D in video_url:video_url='https://youtube.com/watch?v='+video_url.split(D)[1].split(E)[0]+E
         ydl_opts = {}
         try:
