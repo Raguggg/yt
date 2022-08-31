@@ -36,14 +36,14 @@ def download_video(request):
                     resolution = f"{m['height']}x{m['width']}"
                 video_audio_streams.append({
                     'resolution': resolution,
-                    'extension': m['ext'],
+                    'extension': m['ext']+ ('(only audio)' if resolution =='Audio' else'(video+audio)'if m['acodec']!='none' else '(only video)'),
                     'file_size': file_size,
                     'video_url': m['url']
                 })
             video_audio_streams = video_audio_streams[::-1]
-            A=0
-            B='extension'
-            for C in video_audio_streams:C[B] = C[B]+('(only audio)' if C['resolution']=='Audio' else('(video+audio)'if A==0 or A==1 else '(only video)'));A+=1
+            # A=0
+            # B='extension'
+            # for C in video_audio_streams:C[B] = C[B]+('(only audio)' if C['resolution']=='Audio' else('(video+audio)'if A==0 or A==1 else '(only video)'));A+=1
             context = {
                 'form': form,
                 'title': meta.get('title', None),
@@ -57,5 +57,5 @@ def download_video(request):
             }
             return render(request, 'index.html', context)
         except Exception as error:
-            return HttpResponse(error.args[0])
+            return HttpResponse(X)
     return render(request, 'index.html', {'form': form})

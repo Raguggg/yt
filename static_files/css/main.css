@@ -127,6 +127,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     font-family: 'CircularStd';
+    user-select: none;
 
 }
 
@@ -175,6 +176,7 @@ th {
         border-collapse: collapse;
         width: 100%;
         font-family: 'CircularStd';
+        user-select: none;
     
     }
     
